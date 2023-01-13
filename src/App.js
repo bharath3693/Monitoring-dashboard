@@ -12,7 +12,7 @@ import { EdgeDeviceDetails } from "./MyComponents/EdgeDeviceDetails";
 import { Navbar } from "./MyComponents/Navbar";
 
 function App() {
-
+  console.log("yoman");
   const [table1_data, set_table1] = useState([]);
   const [table2_data, set_table2] = useState([]);
   const [table3_data, set_table3] = useState([]);
