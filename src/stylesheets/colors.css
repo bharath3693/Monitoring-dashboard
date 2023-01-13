@@ -1,0 +1,49 @@
+body{
+  background-color: rgb(174, 224, 244);
+  
+}
+
+.bg-color {
+  background-image: linear-gradient(to bottom, #e32da3, #1698c7);
+  background-color: #262b49;
+}
+
+.sidebar-color {
+  background-image: linear-gradient(to bottom, #03364c, #086284);
+  background-image: linear-gradient(to bottom, #0a3d7e, #a40d74);
+}
+.box-color {
+  background-color: #262b49;
+  background-color: #055775;
+}
+.red-grad-tl {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(218, 90, 58),
+    rgb(199, 16, 71)
+  );
+  /* background-color: linear-gradient(to top, #162dbf, #bf0aad);    ; */
+}
+.transparent-bg {
+  background-color: rgb(247, 243, 243, 0.2);
+}
+
+th, td{
+  color: rgb(0, 0, 0);
+}
+td:nth-child(even) {background-color: #f2f2f2;}
+td:nth-child(even) {background-color: #f2f2f2;}
+
+
+.navbar-bg{
+  background-color: #262b49;
+  background-image: linear-gradient(to bottom, #0a3d7e, #a40d74);
+}
+
+.sidebutton-color{
+  background-color: rgba(17, 165, 223, 0.2);
+}
+
+.sidebutton:hover{
+  background-color: rgba(91, 192, 232, 0.5);
+}

@@ -1,0 +1,98 @@
+.rounded-50 {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+.purple-grad {
+  background-image: linear-gradient(to top right, #9d32b0, #cc85d8);
+}
+.orange-grad {
+  background-image: linear-gradient(to top right, #f69b17, #edc487);
+}
+
+.blue-grad {
+  background-image: linear-gradient(to top right, #438ccf, #97bee3);
+}
+.bluemax-grad {
+  background-image: linear-gradient(to top right, #1468b7, #3773ab);
+}
+.green-grad {
+  background-image: linear-gradient(to top right, #12ad2b, #99d2a3);
+}
+.bluethick {
+  background-image: linear-gradient(to top right, #0d3961, #1a3c5d);
+}
+.rounded-some {
+  border-radius: 33px;
+}
+.shadow-max {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.shadow-lite {
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.bg-purple {
+  background-color: #25054c;
+}
+
+.fs-50 {
+  font-size: 250%;
+}
+
+.litewhite {
+  background-color: rgb(247, 243, 243);
+}
+
+.roboto{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.font-small{  
+  font-size: 13px;
+}
+
+.chart-bg{
+  /* background-image: radial-gradient(rgb(2, 30, 58),rgb(9, 149, 188)); */
+  background-image: linear-gradient(rgb(169, 9, 65), rgb(6, 140, 155));
+}
+/* 
+WASTE
+
+.sidebar{
+  height:600px;
+  background-image: linear-gradient(to bottom, #005acd , #7199cc);     
+}
+
+.dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+.sidebutton{
+  color: white;
+}
+
+.sidebutton:hover{
+  background-color: white;
+  color: black;  
+ 
+} */
