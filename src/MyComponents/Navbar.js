@@ -6,15 +6,15 @@ export const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-bg p-1 block m-0 shadow-max" >
-      <div className="container-fluid p-1">
+      <div className="container-fluid p-0">
         <div className="navbar-brand text-white border-right border-info row">
           <div className="col">
           <h5 className="d-flex justify-content-start roboto">
             <img className="mx-1" alt='logoman' src="https://img.icons8.com/external-vitaliy-gorbachev-flat-vitaly-gorbachev/512/external-dashboard-blogger-vitaliy-gorbachev-flat-vitaly-gorbachev.png" height={30} widht={30} />
-            <div className="mt-1">INTELLIGENT EDGE</div>
+            <div className="mt-2">INTELLIGENT EDGE</div>
           </h5>
           </div>
-          <div className="col">
+          <div className="col mt-1 mb-0">
             <Clock />
           </div>
         </div>

@@ -1,14 +1,6 @@
 import React from "react";
-// import { PieChart } from "./PieChart";
-// import { DoughnutChart } from './DoughnutChart'
 import { CountDevices } from "./smallComponents/CountDevices"
-import { scaleOrdinal } from '@visx/scale';
-
-
-import ParentSize from '@visx/responsive/lib/components/ParentSize';
-import Example from './index.tsx';
-
-import { PieChart, Pie, Tooltip, Legend, Cell, LabelList, Sector } from 'recharts';
+import { PieChart, Pie, Tooltip, Legend, Cell, LabelList} from 'recharts';
 
 
 const data01 = [
@@ -17,12 +9,12 @@ const data01 = [
     { name: 'C', value: 300 },
     { name: 'D', value: 200 },
 ];
-const data01leg = [
-    { value: 400 },
-    { value: 300 },
-    { value: 300 },
-    { value: 200 },
-];
+// const data01leg = [
+//     { value: 400 },
+//     { value: 300 },
+//     { value: 300 },
+//     { value: 200 },
+// ];
 const data02 = [
     { name: 'A1', value: 100 },
     { name: 'A2', value: 300 },
@@ -40,63 +32,13 @@ const data02 = [
 
 export const Home = (props) => {
 
-
-
-
-    var heredata = [{ 'device': 'A', 'count': 2 },
-    { 'device': 'B', 'count': 7 },
-    { 'device': 'C', 'count': 5 },
-    { 'device': 'D', 'count': 3 },
-    { 'device': 'E', 'count': 4 }]
-
-    var deviceNames = ['A', 'B', 'C', 'D', 'E'];
-    const getDeviceColor = scaleOrdinal({
-        domain: deviceNames,
-        // range: 
-        // ['red',
-        // 'blue',
-        // 'pink',
-        // 'orange',
-        // 'yellow',
-        // ]
-        range: ['rgba(255,255,255,0.7)',
-            'rgb(255, 161, 164, 1)',
-            'rgba(64, 175, 5,1)',
-            'rgba(13, 218, 184, 0.5)',
-            'rgba(8, 176, 114, 0.8)',
-        ]
-    })
-
-    const getDoughnutColor = scaleOrdinal({
-        domain: deviceNames,
-        range: ['rgba(255,255,255,0.7)',
-            'rgba(255,255,255,0.6)',
-            'rgba(255,255,255,0.5)',
-            'rgba(255,255,255,0.4)',
-            'rgba(255,255,255,0.3)',
-        ]
-    })
-
     const ttStyle = {
         color: 'blue',
         backgroundColor: 'yellow',
         padding: '1px'
         // backgroundImage: 'url('')',
     };
-
-    const renderActiveShape = (props) => {
-        const RADIAN = Math.PI / 180;
-        const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
-        const sin = Math.sin(-RADIAN * midAngle);
-        const cos = Math.cos(-RADIAN * midAngle);
-        const sx = cx + (outerRadius + 10) * cos;
-        const sy = cy + (outerRadius + 10) * sin;
-        const mx = cx + (outerRadius + 30) * cos;
-        const my = cy + (outerRadius + 30) * sin;
-        const ex = mx + (cos >= 0 ? 1 : -1) * 22;
-        const ey = my;
-        const textAnchor = cos >= 0 ? 'start' : 'end';
-    }
+  
 
     const colors = ['rgb(11, 147, 185)', 'rgb(8, 178, 113)', 'rgb(205, 219, 11)', 'rgb(198, 12, 12)']
     const radcolors = ['rgba(255, 255, 255,0.8)', 'rgba(255, 255, 255,0.5)', 'rgba(255, 255, 255,0.6)', 'rgba(255, 255, 255,0.7)']
@@ -129,7 +71,7 @@ export const Home = (props) => {
             </div> */}
 
 
-            <div className="d-flex justify-content-evenly p-2 rounded bg-secondary">
+            <div className="d-flex justify-content-evenly p-2 rounded">
                 <div className="bg-white w-100 m-2 p-0">
                     <h4 className='text-center text-success p-0 bg-white m-0 rounded-top text-uppercase text-size'>Edge Device types</h4>
                     <PieChart className="chart-bg" width={500} height={400}>

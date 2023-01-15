@@ -15,7 +15,7 @@ export const Clock = () => {
     return (
         <span className='text-white'>
             {/* {date.toLocaleString()}              */}
-            <p className='font-small mt-2' >{date.toDateString()}</p>
+            <p className='font-small mt-2 m-0' >{date.toDateString()}</p>
         </span>
     )
 }

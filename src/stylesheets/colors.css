@@ -1,6 +1,5 @@
 body{
-  background-color: rgb(174, 224, 244);
-  
+  background-color: lightgrey; 
 }
 
 .bg-color {
@@ -36,8 +35,8 @@ td:nth-child(even) {background-color: #f2f2f2;}
 
 
 .navbar-bg{
-  background-color: #262b49;
-  background-image: linear-gradient(to bottom, #0a3d7e, #a40d74);
+  background-color: #6200EE;
+  /* background-image: linear-gradient(to bottom, #0a3d7e, #a40d74); */
 }
 
 .sidebutton-color{
