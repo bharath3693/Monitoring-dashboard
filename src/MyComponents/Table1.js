@@ -21,6 +21,7 @@ export const Table1 = (props) => {
         </thead>
         <tbody>
           {props.data.map((d, index) => {
+            console.log(d)
             return (
              
               <tr>

@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Sidebar } from "./MyComponents/Sidebar";
 import { Home } from "./MyComponents/Home";
 import { EdgeDevicePage } from "./MyComponents/EdgeDevicePage"
-import { fetchData } from "./Functions/AWSFunctions";
 import { EdgeDeviceDetails } from "./MyComponents/EdgeDeviceDetails";
 import { Navbar } from "./MyComponents/Navbar";
 
@@ -16,26 +15,34 @@ function App() {
   const [table1_data, set_table1] = useState([]);
   const [table2_data, set_table2] = useState([]);
   const [table3_data, set_table3] = useState([]);
-
-  async function fetchData1() {
-    let x = await fetchData("s3data");        
-    set_table1(x);
-    
-  }
-  async function fetchData2() {
-    let x = await fetchData("openmvdb");
-    set_table2(x);
-    
-  }
-  async function fetchData3() {
-    let x = await fetchData("greengrasscount");     
-    set_table3(x)    
+  
+  const fetchData1 = () => {
+    return fetch("/s3data")
+    .then((response) => response.json())
+    .then((data) => {     
+      set_table1(data['Items in table']);
+    });
   }
 
+  const fetchData2 = () => {
+    return fetch("/openmv")
+    .then((response) => response.json())
+    .then((data) => {      
+      set_table2(data['Items in table']);
+    });
+  }
+  const fetchData3 = () => {
+    return fetch("/greengrass")
+    .then((response) => response.json())
+    .then((data) => {      
+      set_table3(data['Items in table']);
+    });
+  }
+  
   useEffect(() => {
     fetchData1();
     fetchData2();
-    fetchData3();
+    fetchData3();    
   }, []);
 
 

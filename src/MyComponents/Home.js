@@ -53,7 +53,7 @@ export const Home = (props) => {
             <div className="d-flex justify-content-evenly rounded p-1">
                 <CountDevices link={"https://img.icons8.com/external-nawicon-glyph-nawicon/64/228BE6/external-cloud-computing-internet-of-things-nawicon-glyph-nawicon.png"} bg={"red-grad-tl text-info m-1 rounded shadow-max"} name={'Edge Gateway'} count={1} />
                 <CountDevices link={"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABNUlEQVR4nO2ZSwrCMBCGJ6suRHsABV2oia70AproRfQukuhRpPRmFtQLRCqiUvBR87I6P8yq0PxfZpomEwAUCvWRCIC+D9vPnQsBADPwvtbTbksJlkjBjkow7TJkPgan6WYy6FkzLznNXBtXRRBOs9Ws1zQGyGfet3l1hWBbYwAfZaMeA+xtZECHDPg7AFJYn0MDkLL/CwQQFcrAYtTWcb2hIap9FHG9oRejjl2Aop693MT8DSIOtwqZmodLIMBPZYCU+Ih9ABCXqxACRJiB1wpdQmAqBIi+OAPxN24lSKnNXOdswMT8cmx5M4fnAVGh84DyEMTlecBHgKmqD8DZodqNLU7TgBlIjAHknPUVpzv/s08zOR12wYbyLnHeaPVSTvw8RmLN/CPhFRPgFdOflxAK9SM6AcqVkuKAH+gWAAAAAElFTkSuQmCC"} bg={"red-grad-tl text-info m-1 rounded shadow-max"} name={'Edge Devices'} count={3} />
-                <CountDevices link={"https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_120,h_120/https://dashboard.snapcraft.io/site_media/appmedia/2020/05/AWS-IoT-Greengrass4x.png"} bg={"red-grad-tl text-info m-1 rounded shadow-max"} name={'Green Grass Devices'} count={5} />
+                <CountDevices link={"https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_120,h_120/https://dashboard.snapcraft.io/site_media/appmedia/2020/05/AWS-IoT-Greengrass4x.png"} bg={"red-grad-tl text-info m-1 rounded shadow-max"} name={'Green Grass Devices'} count={props.table3.length} />
                 {/* <CountDevices link={"https://cdn-icons-png.flaticon.com/512/6080/6080697.png"} bg={"red-grad-tl text-info m-1 rounded shadow-max"} name={''} count={(props.table3.filter((d) => d.status === 'HEALTHY')).length + "/" + props.table3.length} /> */}
             </div>
             
@@ -77,7 +77,7 @@ export const Home = (props) => {
                     <PieChart className="chart-bg" width={500} height={400}>
                         <Tooltip contentStyle={ttStyle} itemStyle={ttStyle} wrapperStyle={ttStyle} offset={0} cursor={{ stroke: 'red', strokeWidth: 2 }} />
                         <Legend verticalAlign="bottom" iconType="star" height={45} />
-                        <Pie data={data01} cx="50%" cy="50%" outerRadius={90} fill="#8884d8">
+                        <Pie data={data01} dataKey="value" cx="50%" cy="50%" outerRadius={90} fill="#8884d8">
                             <LabelList dataKey="name" position="middle" offset={0} clockWise='1' />
                             {
                                 data01.map((entry, index) => (

@@ -10,19 +10,8 @@ export const CountDevices = (props) => {
         <h2 className='m-0 text-white'> {props.count}</h2>
       </div>
       </div>
-      {/* <div className='d-flex justify-content-around'>
-        <div>
-          
-        </div>
-        <div className='mt-5 ml-2'>
-          <img src={props.link} height={60} width={60} alt="devicelogo" ></img>
-
-        </div>
-        <div className='mt-4'>
-          <h1 className='text-center fs-50'> {props.count} </h1>
-          <h6 className='text-center'>{props.name}</h6>
-        </div>
-      </div> */}
-    </div>
+    </div>         
   )
 }
+
+
