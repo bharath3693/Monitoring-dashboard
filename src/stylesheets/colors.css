@@ -1,16 +1,59 @@
 body{
   background-color: lightgrey; 
 }
+.bg{
+  background-color: lightgrey;
+}
+.prime-color{
+  background-color: #6200EE;  
+}
+
+.var-prime-color{
+  background-color: #3700B3;
+  background-color: #250257;
+  background-color: #3e0292;
+}
+
+.sec-color{
+  background-color: #03DAC6;
+}
+
+.var-sec-color{
+  background-color: #018786;
+}
+
+
 
 .bg-color {
   background-image: linear-gradient(to bottom, #e32da3, #1698c7);
   background-color: #262b49;
 }
 
-.sidebar-color {
-  background-image: linear-gradient(to bottom, #03364c, #086284);
-  background-image: linear-gradient(to bottom, #0a3d7e, #a40d74);
+.sidebar-color {  
+  /* background-image: linear-gradient(to bottom, #0a3d7e, #a40d74); */
+  
+  background-color: #3e0292;
 }
+
+.sidebutton-color{
+  background-color: rgba(17, 165, 223, 0.2);
+  background-color: #3e0292;
+}
+
+.sidebutton:hover{
+  background-color: rgba(91, 192, 232, 0.5);
+}
+
+.yoman{
+  padding-left: 0.5rem;
+}
+
+.navbar-bg{
+  background-color: #6200EE;
+  background-color: #3e0292;
+  /* background-image: linear-gradient(to bottom, #0a3d7e, #a40d74); */
+}
+
 .box-color {
   background-color: #262b49;
   background-color: #055775;
@@ -33,16 +76,13 @@ th, td{
 td:nth-child(even) {background-color: #f2f2f2;}
 td:nth-child(even) {background-color: #f2f2f2;}
 
-
-.navbar-bg{
-  background-color: #6200EE;
-  /* background-image: linear-gradient(to bottom, #0a3d7e, #a40d74); */
+.chart-bg{  
+  background-color: #8f228f;
+  /* background-image: linear-gradient(rgb(241, 221, 228), rgb(180, 223, 228)); */
 }
 
-.sidebutton-color{
-  background-color: rgba(17, 165, 223, 0.2);
+.text-bold{
+font-weight: bolder;
+font-size: 1.15em;
 }
 
-.sidebutton:hover{
-  background-color: rgba(91, 192, 232, 0.5);
-}

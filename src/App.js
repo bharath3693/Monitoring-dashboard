@@ -1,14 +1,15 @@
 import "./stylesheets/App.css";
-import "./stylesheets/custom_styles.css"
-import "./stylesheets/count.css"
-import "./stylesheets/colors.css"
+import "./stylesheets/custom_styles.css";
+import "./stylesheets/count.css";
+import "./stylesheets/colors.css";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Sidebar } from "./MyComponents/Sidebar";
 import { Home } from "./MyComponents/Home";
-import { EdgeDevicePage } from "./MyComponents/EdgeDevicePage"
+import { EdgeDevicePage } from "./MyComponents/EdgeDevicePage";
 import { EdgeDeviceDetails } from "./MyComponents/EdgeDeviceDetails";
 import { Navbar } from "./MyComponents/Navbar";
+// import { fetchData } from "./Functions/AWSFunctions";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
     .then((response) => response.json())
     .then((data) => {     
       set_table1(data['Items in table']);
+      console.log(data['Items in table'])
     });
   }
 
@@ -38,33 +40,23 @@ function App() {
       set_table3(data['Items in table']);
     });
   }
-  
-  useEffect(() => {
+
+  useEffect( () => {
+    // fetchData("openmvdb");  
+    // fetch(`https://3uskrwhsi7.execute-api.us-east-1.amazonaws.com/prod/ui-to-db?table=s3data`, {mode: 'no-cors'})
+    // .then((res) => console.log(res))
+    // fetchData("openmvdb");  
     fetchData1();
     fetchData2();
-    fetchData3();    
+    fetchData3();
+  
   }, []);
 
-
-  // const [values, setData] = useState({
-  //   datas: [{'version': {'S': '1'}, 'id': {'S': '2'}, 'Name': {'S': 'nihar'}, 'age': {'S': '12'}}, {'version': {'S': '2'}, 'id': {'S': '1'}, 'Name': {'S': 'sujith'}, 'age': {'S': '10'}}, {'version': {'S': '1'}, 'id': {'S': '3'}, 'Name': {'S': 'vin'}, 'age': {'S': '11'}}],
-  // });
-
-  // const [clicked1, setClick1] = useState(0);
-  // const [clicked2, setClick2] = useState(0);
-
+ 
   return (
     <>
       <Router>
-        <Navbar />
-        {/* <div className="row">
-          <h1>jhgfcx</h1>
-          {table3_data.map((d)=>{
-          return (
-            <>{d.status}</>
-          )
-        })}
-        </div> */}
+        <Navbar />       
         <div className="row p-0 m-0">
           <Sidebar />
           <Routes>

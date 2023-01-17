@@ -39,7 +39,15 @@ tr td{
   width: 40%;
 }
 .sidebar{      
-  height: 100em;
+  height: 170vh;
+}
+
+.flex-stretch{
+  flex: 1;
+}
+
+.count-tab{
+  height: 30vh;
 }
 
 

@@ -1,3 +1,10 @@
-.text-size {
-  font-size: 1.2em;
+
+.count-font{
+  /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.3vw;
+  font-weight: bolder;
 }
+
