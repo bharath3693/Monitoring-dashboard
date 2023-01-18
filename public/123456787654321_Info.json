@@ -1,0 +1,6 @@
+{ 
+  "Edge_Gateway_Id" :  "000000006c04582a",
+  "Hardware"		:  "BCM2835",
+  "Revision"		:  "a020d3",
+  "Model"   		:  "Raspberry Pi 3 Model B Plus Rev 1.3"
+}

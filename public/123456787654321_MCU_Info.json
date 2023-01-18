@@ -1,0 +1,36 @@
+{"Devices":[
+	{"Device": "OpenMV",
+	"Board ID": "3736323730315112001F0026",
+	"Board Type": "H7",
+	"Board Architecture": "OMV4P H7 32768 SDRAM",
+    "Hardware Version": "4.3.3",
+    "Model_Name": "Blister",
+    "Model_Type":  "Imageclassification",
+    "Model_Version": "1.0.0",
+	"Status": "Inactive",
+    "Edge_Gateway_ID": "1234567887654321"
+	},
+	{"Device": "OpenMV",
+	"Board ID": "3736323730315112001F0026",
+	"Board Type": "H7",
+	"Board Architecture": "OMV4P H7 32768 SDRAM",
+    "Hardware Version": "4.3.3",
+    "Model_Name": "Blister",
+    "Model_Type":  "Imageclassification",
+    "Model_Version": "1.0.0",
+	"Status": "Inactive",
+    "Edge_Gateway_ID": "1234567887654321"
+	},
+	{"Device": "OpenMV",
+	"Board ID": "3736323730315112001F0026",
+	"Board Type": "H7",
+	"Board Architecture": "OMV4P H7 32768 SDRAM",
+    "Hardware Version": "4.3.3",
+    "Model_Name": "Blister",
+    "Model_Type":  "Imageclassification",
+    "Model_Version": "1.0.0",
+	"Status": "Inactive",
+    "Edge_Gateway_ID": "1234567887654321"
+	}
+	]
+}

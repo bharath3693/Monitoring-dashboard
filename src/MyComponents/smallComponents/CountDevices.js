@@ -3,11 +3,11 @@ import React from 'react'
 export const CountDevices = (props) => {
   return (
 
-    <div className={props.bg} style={{ height: '10em'}}> 
-      <p className='text-center p-2 bg-white m-0 rounded-top text-uppercase text-size text-success text-bold'>{props.name}</p>
-      <div className='d-flex flex-column align-items-center justify-content-center p-2'>
+    <div className={props.bg}> 
+      <p className='count-head text-center p-2 m-0 rounded-top text-uppercase text-size text-bold shadow-lite'>{props.name}</p>
+      <div className='count-body d-flex flex-column align-items-center justify-content-center p-2 rounded'>
         <img className='' src={props.link} height={50} width={50} alt="devicelogo" ></img>
-        <h1 className='m-0 text-white'> {props.count}</h1>
+        <p id="count-count" className='m-0'> {props.count}</p>
       </div>    
       </div>
 

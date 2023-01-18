@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { Link } from "react-router-dom";
 
 export const Table2 = (props) => {
 
@@ -18,7 +19,7 @@ export const Table2 = (props) => {
 
 
   return (
-    <table className="table">
+    <table className="table table-bordered">
       {console.log(props.data[0])}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -56,18 +57,11 @@ export const Table2 = (props) => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <thead>
+      <thead className="table-head">
         <tr>
           <th scope="col">No</th>
-          <th scope="col">Leaving Device Name</th>
-          <th scope="col">Version</th>
-          <th scope="col">Status</th>
-          <th scope="col">Unique ID</th>
-          <th scope="col">Connected Edge Device</th>
-          <th scope="col">Release</th>
-          <th scope="col">Machine</th>
-          <th scope="col">Node Name</th>
-          <th scope="col">System Name</th>
+          <th scope="col">Edge Device Name</th>          
+          <th scope="col">Status</th>          
         </tr>
       </thead>
       <tbody>
@@ -75,15 +69,9 @@ export const Table2 = (props) => {
           return (
             <tr>
               <th scope="row">{index + 1}</th>
-              <td> <Button variant="primary" className="btn btn-sm blue-grad" onClick={() => handleShow(index)} >Leaving Device Name </Button> </td>
-              <td>{d["version"]}</td>
-              <td>NA</td>
-              <td>NA</td>
-              <td>NA</td>
-              <td>{d["release"]}</td>
-              <td>{d["machine"]}</td>
-              <td>{d["nodename"]}</td>
-              <td>{d["sysname"]}</td>
+              <td><Link to={"/edge/device/leave"}> <Button className="btn btn-sm bt-info" >{d['Board ID']}</Button></Link> </td>
+              {/* <td><Link> <Button variant="primary" className="btn btn-sm blue-grad" onClick={() => handleShow(index)} >Leaving Device Name </Button></Link> </td> */}
+              <td>{d['Status']}</td>              
             </tr>
           );
         })}

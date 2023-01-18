@@ -1,5 +1,5 @@
 body{
-  background-color: lightgrey; 
+  background-color: rgb(255, 255, 255); 
 }
 .bg{
   background-color: lightgrey;
@@ -9,9 +9,11 @@ body{
 }
 
 .var-prime-color{
-  background-color: #3700B3;
+  /* background-color: #3700B3;
   background-color: #250257;
-  background-color: #3e0292;
+  background-color: #a100ff; */
+  /* background-image: linear-gradient(to top left , #8303cd, #9d28e0); */
+  background-color: white;
 }
 
 .sec-color{
@@ -29,35 +31,99 @@ body{
   background-color: #262b49;
 }
 
-.sidebar-color {  
-  /* background-image: linear-gradient(to bottom, #0a3d7e, #a40d74); */
-  
-  background-color: #3e0292;
+
+
+/* NAVBAR */
+.navbar-bg{  
+  background-color: rgb(255, 255, 255);  
 }
+
+.navbar-title{
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-weight: 700;
+}
+
+.clock{
+  font-size: 13px;
+}
+
+.profile-name{
+  color: black;
+}
+
+
+#btn-logout{
+  background-color: #03DAC6;
+  color: black;
+}
+
+
+/* SIDEBAR */
+.sidebar-color {     
+  background-color: #fdfcff;
+  background-color: rgb(255, 255, 255);    
+}
+
 
 .sidebutton-color{
   background-color: rgba(17, 165, 223, 0.2);
-  background-color: #3e0292;
+  background-color: #ffffff;
+  background-color: rgb(255, 255, 255);      
+  
 }
 
 .sidebutton:hover{
   background-color: rgba(91, 192, 232, 0.5);
+  background-color: rgba(1,135,134, 0.8);
 }
 
-.yoman{
-  padding-left: 0.5rem;
+
+/* COUNT DEVICES BOX */
+.count-box{
+  background-color: white;    
 }
 
-.navbar-bg{
-  background-color: #6200EE;
-  background-color: #3e0292;
-  /* background-image: linear-gradient(to bottom, #0a3d7e, #a40d74); */
+.count-head{
+  background-color: rgb(162, 159, 159);    
 }
 
-.box-color {
-  background-color: #262b49;
-  background-color: #055775;
+.count-body{
+  background-color: #ffffff;  
+  color: black;
 }
+#count-count{
+  font-size: 2.7em;
+  font-weight: 500;
+  
+}
+
+/* CHART BOX */
+.chart-box{
+  flex: 1;
+}
+
+.chart-head{
+  color: black;
+  background-color: rgb(162, 159, 159);    
+}
+
+.chart-body{
+  background-color: rgb(32, 30, 30);
+}
+
+/* TABLE */
+.table-head{
+  background-color: rgb(51, 50, 50);
+  color: white
+}
+
+table Button{
+  background-color: #03DAC6;
+  color: black;
+}
+
+
+/* OTHERS */
 .red-grad-tl {
   background-image: linear-gradient(
     to bottom right,
@@ -70,11 +136,12 @@ body{
   background-color: rgb(247, 243, 243, 0.2);
 }
 
-th, td{
-  color: rgb(0, 0, 0);
+
+td:nth-child(even) {background-color: #f2f2f2;}
+td:nth-child(even) {background-color: #f2f2f2;}
+th{
+  background-color: gray;
 }
-td:nth-child(even) {background-color: #f2f2f2;}
-td:nth-child(even) {background-color: #f2f2f2;}
 
 .chart-bg{  
   background-color: #8f228f;
@@ -86,3 +153,12 @@ font-weight: bolder;
 font-size: 1.15em;
 }
 
+.bg-lite-dark{
+  background-color: rgb(56, 53, 53);
+  background-color: rgb(32, 30, 30);
+  /* background-image: linear-gradient(to bottom, rgb(32, 30, 30),rgb(70, 65, 65)); */
+}
+
+th{
+  background-color: rgb(56, 53, 53);
+}

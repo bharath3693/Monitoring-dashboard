@@ -42,13 +42,14 @@ tr td{
   height: 170vh;
 }
 
-.flex-stretch{
-  flex: 1;
+.main-icon{
+ font-size: 1.2em; 
 }
 
-.count-tab{
-  height: 30vh;
+.flex-stretch{
+  flex : 1
 }
+
 
 
 

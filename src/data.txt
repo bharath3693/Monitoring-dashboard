@@ -1,0 +1,9 @@
+LEAVING DEVICE
+ "Records": [{“DEVICE": “OpenMV",
+                “Device_Board_ID" : "3037373634305115003A001A",  
+                “Device_Board_Type" : “H7",  
+                “Device_Board_Architecture" : “OMV4 H7 1024",  
+                “Device_Board_Version" : “4.3.0", 
+                “MODEL_NAME": "Blister",
+                "MODEL_TYPE":  "Imageclassification",
+                 "ModelVersion" : “1.0.8"             }        ]}
