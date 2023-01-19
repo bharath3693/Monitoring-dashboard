@@ -8,9 +8,13 @@ export const Table1 = (props) => {
         <thead className="table-head">
           <tr>
             <th scope="col">No</th>
-            <th scope="col">Edge Device Name</th>           
+            <th scope="col">Edge Device ID</th>           
+            <th scope="col">Device Type</th>           
             <th scope="col">Status</th>                      
-            <th scope="col">Leaving Devices</th>
+            <th scope="col">Edge Devices count</th>
+            <th scope="col">Connected Edge Devices IDs</th>           
+            <th scope="col">Greengrass Device Connected</th>           
+
           </tr>
         </thead>
         <tbody>
@@ -20,8 +24,11 @@ export const Table1 = (props) => {
               <tr>
                 <th scope="row">{index + 1}</th>
                 <td><Link className="text-decoration-none" to={"/edge/device"}><b>{d['Edge_Gateway_Id']}</b></Link></td>                                              
-                <td>{d['Hardware']}</td>
+                <td>TYPE</td>
+                <td>Active</td>
                 <td>3</td>
+                <td>kjhbgvc</td>
+                <td>jhbgvhgvbnhgbv</td>
               </tr>             
             );
           })}

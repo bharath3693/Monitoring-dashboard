@@ -5,7 +5,7 @@ export const DeviceDetails = (props) => {
     
         <div className={props.classdetails} style={{height:100}}>
             <h3 className="fontstyle">{props.head}</h3>            
-            <p className="fontstyle"><b>{props.ans}</b></p>
+            <h5 className="fontstyle text-wrap"><b>{props.ans}</b></h5>
         </div>
     
   )

@@ -49,34 +49,49 @@ font-weight: 700;
 
 .profile-name{
   color: black;
+  width: 8vw;
 }
 
 
 #btn-logout{
   background-color: #03DAC6;
   color: black;
+  width: 8vw;
 }
 
 
 /* SIDEBAR */
+
+
 .sidebar-color {     
   background-color: #fdfcff;
-  background-color: rgb(255, 255, 255);    
+  background-color: rgb(255, 255, 255); 
+  font-size: small;     
 }
 
 
 .sidebutton-color{
   background-color: rgba(17, 165, 223, 0.2);
   background-color: #ffffff;
-  background-color: rgb(255, 255, 255);      
-  
+  background-color: rgb(255, 255, 255);  
 }
 
 .sidebutton:hover{
   background-color: rgba(91, 192, 232, 0.5);
-  background-color: rgba(1,135,134, 0.8);
+  background-color: rgba(1,135,134, 0.8);  
 }
 
+.user-icon{
+  font-size: small;  
+}
+
+.main-icon{
+  font-size: large;
+}
+
+#menu{
+  font-size: x-large;
+}
 
 /* COUNT DEVICES BOX */
 .count-box{

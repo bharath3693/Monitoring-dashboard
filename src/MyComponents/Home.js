@@ -26,7 +26,7 @@ export const Home = (props) => {
 
             <div className="d-flex justify-content-between rounded p-2">
                 <CountDevices bg={"flex-stretch count-box m-1 rounded shadow-max"} link={"https://img.icons8.com/external-nawicon-glyph-nawicon/64/228BE6/external-cloud-computing-internet-of-things-nawicon-glyph-nawicon.png"} name={'NumbeR of Edge Gateways'} count={1} />
-                <CountDevices bg={"flex-stretch count-box m-1 rounded shadow-max"} name={'Number of Edge Devices'} count={3} link={"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABNUlEQVR4nO2ZSwrCMBCGJ6suRHsABV2oia70AproRfQukuhRpPRmFtQLRCqiUvBR87I6P8yq0PxfZpomEwAUCvWRCIC+D9vPnQsBADPwvtbTbksJlkjBjkow7TJkPgan6WYy6FkzLznNXBtXRRBOs9Ws1zQGyGfet3l1hWBbYwAfZaMeA+xtZECHDPg7AFJYn0MDkLL/CwQQFcrAYtTWcb2hIap9FHG9oRejjl2Aop693MT8DSIOtwqZmodLIMBPZYCU+Ih9ABCXqxACRJiB1wpdQmAqBIi+OAPxN24lSKnNXOdswMT8cmx5M4fnAVGh84DyEMTlecBHgKmqD8DZodqNLU7TgBlIjAHknPUVpzv/s08zOR12wYbyLnHeaPVSTvw8RmLN/CPhFRPgFdOflxAK9SM6AcqVkuKAH+gWAAAAAElFTkSuQmCC"} />
+                <CountDevices bg={"flex-stretch count-box m-1 rounded shadow-max"} name={'Number of Edge Devices'} count={3} link={"./mcu.png"} />
                 <CountDevices bg={"flex-stretch count-box m-1 rounded shadow-max"} link={"./gg-side.webp"} name={'Number of Green Grass Devices'} count={props.table3.length} />
                 {/* <CountDevices link={"https://cdn-icons-png.flaticon.com/512/6080/6080697.png"} bg={"flex-stretch var-prime-color text-info m-1 rounded shadow-max"} name={'Green Grass health'} count={(props.table3.filter((d) => d.status === 'HEALTHY')).length + "/" + props.table3.length} /> */}
             </div>

@@ -10,6 +10,9 @@ import { EdgeDevicePage } from "./MyComponents/EdgeDevicePage";
 import { EdgeDeviceDetails } from "./MyComponents/EdgeDeviceDetails";
 import { Navbar } from "./MyComponents/Navbar";
 import { LeavingDevicePage } from "./MyComponents/LeavingDevicePage";
+import { UserManagement } from "./pages/UserManagement";
+import { LeavingDeviceList } from "./pages/LeavingDeviceList";
+import { GGpage } from "./pages/GGpage";
 // import { fetchData } from "./Functions/AWSFunctions";
 
 function App() {
@@ -116,6 +119,9 @@ function App() {
             <Route exact path='/edge' element={<EdgeDevicePage table1={table1_data} />} />
             <Route exact path='/edge/device' element={<EdgeDeviceDetails table1={table1_data} table2={table2_data} />} />
             <Route exact path='/edge/device/leave' element={<LeavingDevicePage data={table2_data} />} />
+            <Route exact path='/usermanagement' element={ <UserManagement/> } />
+            <Route exact path='/leave' element={ <LeavingDeviceList/> } />          
+            <Route exact path='/greengrass' element={ <GGpage/> } /> 
           </Routes>
         </div>
       </Router>
