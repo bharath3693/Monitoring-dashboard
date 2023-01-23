@@ -1,22 +1,21 @@
 .App {
   text-align: center;
 }
-body {	
+body {
   /* background: linear-gradient(to right, #260b48, #5a358b);         */
   /* background-image: linear-gradient(to bottom, #e32da3,#1698c7); */
-  width: 100%;        
+  width: 100%;
 }
-
 
 /* Device Details Page  */
 .flex-container {
   display: flex;
   flex-wrap: nowrap;
   align-items: baseline;
-  justify-content: center;  
+  justify-content: center;
 }
 
-.flex-container > div {   
+.flex-container > div {
   padding: 5px;
   flex-grow: 1;
   margin: 0px;
@@ -25,38 +24,41 @@ body {
   font-size: 25px;
 }
 
-.fontstyle{
-font-family: 'Courier New', Courier, monospace;
+.fontstyle {
+  font-family: "Courier New", Courier, monospace;
+  font-size: large;
+  font-weight: 600;
 }
 
-th,td{
-  font-size: medium;  
+
+/* th,
+td {
+  font-size: medium;
 }
-tr td{
+tr td {
   background-color: aqua;
-}
-.w-40{
+} */
+
+.w-40 {
   width: 40%;
 }
-.sidebar{      
+.sidebar {
   height: 170vh;
 }
 
-.main-icon{
- font-size: 1.2em; 
+.big-font {
+  font-size: 1.2em;
 }
 
-.flex-stretch{
-  flex : 1
+.flex-stretch {
+  flex: 1;
 }
 
 
-
-
- /* New Sidebar template */
+/* New Sidebar template */
 /* #wrapper {
   padding-left: 0; */
-  /* -webkit-transition: all 0.5s ease;
+/* -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease; */
@@ -75,7 +77,7 @@ tr td{
   overflow-y: auto;
   overflow-x: hidden;  
   background-color: #262b49; */
-  /* -webkit-transition: all 0.5s ease;
+/* -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease; 

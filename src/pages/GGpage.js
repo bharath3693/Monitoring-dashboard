@@ -1,12 +1,12 @@
 import React from 'react'
 
-export const GGpage = () => {
+export const GGpage = (props) => {
     return (
         <div className='col-10 m-0 p-2'>
             <h1 className='p-3'>Green Grass Core Device Details</h1>
             <table className='table table-bordered'>
                 <thead className='table-head'>
-                    <tr>
+                    <tr key={"head"}>
                         <th>No</th>
                         <th>Device Name</th>
                         <th>Status</th>
@@ -14,18 +14,18 @@ export const GGpage = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>GG Name1</td>
-                        <td>Healthy</td>
-                        <td>9:30PM </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>GG Name2</td>
-                        <td>UN Healthy</td>
-                        <td>8:30PM </td>
-                    </tr>
+                    {props.data.map((d, index) => {
+                        return (
+
+                            <tr key={index}>
+                                <td>{index}</td>
+                                <td>{d['coreDeviceThingName']}</td>
+                                <td>{d['status']}</td>
+                                <td>{d['lastStatusUpdateTimestamp']} </td>
+                            </tr>
+                        )
+                    })
+                    }
                 </tbody>
             </table>
         </div>

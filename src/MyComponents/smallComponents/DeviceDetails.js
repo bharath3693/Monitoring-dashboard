@@ -3,9 +3,10 @@ import React from 'react'
 export const DeviceDetails = (props) => {
   return (
     
-        <div className={props.classdetails} style={{height:100}}>
-            <h3 className="fontstyle">{props.head}</h3>            
-            <h5 className="fontstyle text-wrap"><b>{props.ans}</b></h5>
+        <div className={props.classdetails} style={{height:115}}>
+            <h6 className="fontstyle text-dark"> {props.head}</h6>
+            <hr className='m-1'></hr>            
+            <h6 className="fontstyle flex-wrap text-dark">{props.ans}</h6>
         </div>
     
   )

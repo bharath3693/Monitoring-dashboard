@@ -122,3 +122,41 @@
                     </tr>
                 </thead>
             </table> */}            
+
+
+            <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>{trail}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="d-flex flex-column">
+            <div>
+              <h6>Version : 12348765ruijhgfty7uhgfc5</h6>
+            </div>
+            <div>
+              <h6>Model : 12345</h6>
+            </div>
+            <div>
+              <h6>ID : 23453</h6>
+            </div>                       
+          </div>         
+          {/* <table className="bg-dark">
+                    <tbody>
+                      <tr>
+                        <td>Vesrion : sdfg</td>
+                        <td>Id: 1234</td>
+                      </tr>
+                      <tr>
+                        <td>Model:2345</td>
+                        <td>Bus:12345</td>
+                      </tr>
+                    </tbody>
+                  </table> */}
+
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>

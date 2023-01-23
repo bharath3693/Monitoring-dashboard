@@ -4,15 +4,15 @@ const app = express()
 const port = process.env.PORT || 3001;
 const url = "https://3uskrwhsi7.execute-api.us-east-1.amazonaws.com/prod/ui-to-db?table=";
 
-app.get("/openmv", async (req, res)=>{
-    axios.get(url+"openmvdb")
-    .then(resp =>{      
+app.get("/edgegateway", async (req, res)=>{
+    axios.get(url+"EdgeGatewayDevices")
+    .then(resp =>{          
         res.send(resp.data.body)
     })
 });
 
-app.get("/s3data", async (req, res)=>{
-    axios.get(url+"s3data")
+app.get("/edgedevices", async (req, res)=>{
+    axios.get(url+"EdgeDevicesTable")
     .then(resp =>{
         res.send(resp.data.body)
     })    

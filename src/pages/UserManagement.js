@@ -3,7 +3,7 @@ import React from 'react'
 export const UserManagement = () => {
     return (
         <div className="col-10 pt-3 m-0 p-2">
-            <h1 className='text-center'>Dashboard Approval Access</h1>
+            <h1 className='text-center text-capitalise'>Dashboard Approval </h1>
             <table className='table table-bordered'>
                 <thead>
                     <tr>

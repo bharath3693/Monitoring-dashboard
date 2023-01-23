@@ -1,6 +1,7 @@
 import React from "react";
 import { CountDevices } from "./smallComponents/CountDevices"
 import { PieChart, Pie, Tooltip, Legend, Cell, LabelList } from 'recharts';
+import { CollapsibleTable } from "./CollapsibleTable";
 
 const data01 = [
     { name: 'Device A', value: 4 },
@@ -24,6 +25,7 @@ export const Home = (props) => {
     return (
         <div className="col-10 p-0 pt-3 m-0">
 
+           
             <div className="d-flex justify-content-between rounded p-2">
                 <CountDevices bg={"flex-stretch count-box m-1 rounded shadow-max"} link={"https://img.icons8.com/external-nawicon-glyph-nawicon/64/228BE6/external-cloud-computing-internet-of-things-nawicon-glyph-nawicon.png"} name={'NumbeR of Edge Gateways'} count={1} />
                 <CountDevices bg={"flex-stretch count-box m-1 rounded shadow-max"} name={'Number of Edge Devices'} count={3} link={"./mcu.png"} />

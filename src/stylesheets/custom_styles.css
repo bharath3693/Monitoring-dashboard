@@ -22,7 +22,7 @@
   background-image: linear-gradient(to top right, #0d3961, #1a3c5d);
 }
 .rounded-some {
-  border-radius: 33px;
+  border-radius: 22px;
 }
 .shadow-max {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
@@ -49,6 +49,12 @@
 
 .roboto{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.device-tabs{
+  flex: 1;
+  font-size: larger;
+  height: 10em;
 }
 
 

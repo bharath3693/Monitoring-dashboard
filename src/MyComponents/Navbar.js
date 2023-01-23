@@ -19,11 +19,11 @@ export const Navbar = () => {
           </div> */}
         </div>
 
-        <div class="input-group m-0 p-0">
-          <div class="form-outline">
-            <input type="search" id="form1" class="form-control" />
+        <div className="input-group m-0 p-0">
+          <div className="form-outline">
+            <input type="search" id="form1" className="form-control" />
           </div>
-          <button type="button" class="btn btn-primary">
+          <button type="button" className="btn btn-primary">
             search
           </button>
         </div>

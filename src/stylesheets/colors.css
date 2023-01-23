@@ -127,7 +127,7 @@ font-weight: 700;
 }
 
 /* TABLE */
-.table-head{
+/* .table-head{
   background-color: rgb(51, 50, 50);
   color: white
 }
@@ -135,7 +135,7 @@ font-weight: 700;
 table Button{
   background-color: #03DAC6;
   color: black;
-}
+} */
 
 
 /* OTHERS */
@@ -153,10 +153,8 @@ table Button{
 
 
 td:nth-child(even) {background-color: #f2f2f2;}
-td:nth-child(even) {background-color: #f2f2f2;}
-th{
-  background-color: gray;
-}
+th:nth-child(even) {background-color: #f2f2f2;}
+
 
 .chart-bg{  
   background-color: #8f228f;
@@ -174,6 +172,3 @@ font-size: 1.15em;
   /* background-image: linear-gradient(to bottom, rgb(32, 30, 30),rgb(70, 65, 65)); */
 }
 
-th{
-  background-color: rgb(56, 53, 53);
-}
