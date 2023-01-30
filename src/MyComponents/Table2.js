@@ -1,6 +1,4 @@
 import React from "react";
-import { useState } from 'react';
-import { Link } from "react-router-dom";
 import {TableContainer, Table, TableHead, TableRow, TableCell, TableBody} from '@mui/material'
 import { Row } from './smallComponents/Row'
 
@@ -9,14 +7,17 @@ export const Table2 = (props) => {
 
 
   return (
-    <TableContainer sx={{ border: 1 }} >
+    <TableContainer sx={{ border: 1  }}>
       <Table>
         <TableHead>
           <TableRow >
             <TableCell />
-            <TableCell align="center"> No</TableCell>
-            <TableCell align="center">Edge Device</TableCell>
-            <TableCell align="center">Status</TableCell>
+            <TableCell align="center"><b>  No</b></TableCell>
+            <TableCell align="center"><b> Edge Node</b></TableCell>
+            <TableCell align="center"><b> Device Type</b></TableCell>
+            <TableCell align="center"><b> Status</b></TableCell>
+            <TableCell align="center"><b> Edge Gateway ID</b></TableCell>
+            <TableCell align="center"><b> Last Updated</b></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

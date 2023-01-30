@@ -160,3 +160,21 @@
           </Button>
         </Modal.Footer>
       </Modal>
+
+
+
+ {/* <button className='btn btn-primary m-1' onClick={() => setHide(1)} >Pending Requests</button>
+            <button className='btn btn-primary m-1' onClick={() => setHide(2)} >Accepted</button>
+            <button className='btn btn-primary m-1' onClick={() => setHide(3)} >Rejected</button>
+            {
+
+                hide === 1 &&
+                
+            }
+            {
+                hide === 2 &&
+               
+            }
+            {
+                hide === 3 &&                
+            } */}

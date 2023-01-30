@@ -2,7 +2,7 @@
   "name": "my_dashboard",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:8080/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "aws-sdk": "^2.1277.0",
     "axios": "^1.2.2",
+    "mdb-react-ui-kit": "^5.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",

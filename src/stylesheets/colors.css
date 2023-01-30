@@ -123,10 +123,15 @@ font-weight: 700;
 }
 
 .chart-body{
-  background-color: rgb(32, 30, 30);
+  background-color: rgb(33, 33, 33);
 }
 
 /* TABLE */
+
+th{
+  font-weight: bold;
+  text-transform: uppercase;
+}
 /* .table-head{
   background-color: rgb(51, 50, 50);
   color: white
@@ -151,9 +156,9 @@ table Button{
   background-color: rgb(247, 243, 243, 0.2);
 }
 
-
+/* 
 td:nth-child(even) {background-color: #f2f2f2;}
-th:nth-child(even) {background-color: #f2f2f2;}
+th:nth-child(even) {background-color: #f2f2f2;} */
 
 
 .chart-bg{  

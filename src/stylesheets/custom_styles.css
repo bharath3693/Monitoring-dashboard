@@ -51,10 +51,8 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.device-tabs{
-  flex: 1;
-  font-size: larger;
-  height: 10em;
+.device-tabs{  
+  font-size: larger;  
 }
 
 
