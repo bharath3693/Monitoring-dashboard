@@ -12,7 +12,6 @@ export const RestPass = () => {
     const history = useNavigate();
     const valuee = useLocation();
     console.log("value is   " + valuee.state.e);
-
     //  const user=valuee.state.e;
     const userName = valuee.state.e;
 
@@ -26,7 +25,7 @@ export const RestPass = () => {
         e.preventDefault();
         // setLoading(true);
 
-        if (confirmPassword == newPassword) {
+        if (confirmPassword === newPassword) {
             fetch("http://localhost:8080/password", {
                 method: "post",
                 // We convert the React state to JSON and send it as the POST body
@@ -40,7 +39,7 @@ export const RestPass = () => {
                 .then((result) => {
                     console.log(result.status);
 
-                    if (result.status == "true") {
+                    if (result.status === "true") {
                         alert("Password changed succesfully");
                         history("/Login");
                     } else {
@@ -103,7 +102,7 @@ export const RestPass = () => {
 
                             <p className="ms-5">
                                 {" "}
-                                <a onClick={goToLogin} class="link-info">
+                                <a href="/login" onClick={goToLogin} class="link-info">
                                     Login
                                 </a>
                             </p>
@@ -112,7 +111,7 @@ export const RestPass = () => {
                     <MDBCol sm="5" className="d-none d-sm-block px-0">
                         <img
                             src="https://static.vecteezy.com/system/resources/previews/005/204/303/original/edge-computing-icon-vector.jpg"
-                            alt="Login image"
+                            alt="reset"
                             class="img-fluid"
                             style={{ objectFit: "cover", objectPosition: "left" }}
                         />

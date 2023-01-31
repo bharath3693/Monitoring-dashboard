@@ -4,10 +4,8 @@ import {
   MDBContainer,
   MDBCol,
   MDBRow,
-  MDBBtn,
   MDBIcon,
-  MDBInput,
-  MDBCheckbox
+  MDBInput  
 }
   from 'mdb-react-ui-kit';
 
@@ -38,7 +36,7 @@ export const ForgotPassword = () => {
             
             console.log(result.status)
 
-            if(result.status=="true")
+            if(result.status==="true")
             {
                 history("/EnterOtp" , {
                     state: {
@@ -93,7 +91,7 @@ export const ForgotPassword = () => {
 
 
                            
-                            <p className='ms-5'>  <a onClick={goToLogin} class="link-info">Login</a></p>
+                            <p className='ms-5'>  <a href='/login' onClick={goToLogin} class="link-info">Login</a></p>
                             
 
                         </div>
@@ -102,7 +100,7 @@ export const ForgotPassword = () => {
 
                     <MDBCol sm='5' className='d-none d-sm-block px-0'>
                         <img src="https://static.vecteezy.com/system/resources/previews/005/204/303/original/edge-computing-icon-vector.jpg"
-                            alt="Login image" class="img-fluid" style={{ objectFit: 'cover', objectPosition: 'left' }} />
+                            alt="forgot" class="img-fluid" style={{ objectFit: 'cover', objectPosition: 'left' }} />
                     </MDBCol>
 
                 </MDBRow>

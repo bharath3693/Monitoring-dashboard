@@ -2,7 +2,6 @@ import React from "react";
 import { CountDevices } from "./smallComponents/CountDevices"
 import { PieChart, Pie, Tooltip, Legend, Cell, LabelList } from 'recharts';
 import { Sidebar } from "./Sidebar";
-import { Navbar } from "./Navbar";
 
 
 export const Home = (props) => {
@@ -33,8 +32,7 @@ export const Home = (props) => {
     const radcolors = ['rgba(0, 255, 255,0.9)', 'rgba(0, 255, 255,0.6)', 'rgba(0, 255, 255,0.9)', 'rgba(0, 255, 255,0.6)']
 
     return (
-        <>
-            <Navbar/>
+        <>            
             <div className="row p-0 m-0">
                 <Sidebar />
                 <div className="col-10 p-0 pt-3 m-0">

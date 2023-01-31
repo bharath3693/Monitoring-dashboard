@@ -2,14 +2,12 @@ import React from 'react'
 import { CountDevices } from './smallComponents/CountDevices'
 import { Table1 } from './Table1'
 import { Sidebar } from "./Sidebar";
-import { Navbar } from "./Navbar";
 
 
 export const EdgeGatewayList = (props) => {
   console.log(props.table1)
   return (
-    <>
-      <Navbar />      
+    <>      
       <div className="row p-0 m-0">
         <Sidebar />
         <div className="col-10 p-0 m-0 pt-4">

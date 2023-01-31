@@ -18,6 +18,7 @@ import { ForgotPassword } from "./pages/ForgotPassword";
 import { EnterOtp } from "./pages/EnterOtp";
 import { RestPass } from "./pages/RestPass";
 import { Profile } from "./pages/Profile";
+import { Navbar } from "./MyComponents/Navbar";
 
 function App() {
 
@@ -47,7 +48,7 @@ function App() {
         set_table3(data['Items in table']);
       });
   }
-  
+
   useEffect(() => {
     fetchData1();
     fetchData2();
@@ -62,16 +63,18 @@ function App() {
           <Route path="/Signup" element={<Signup />}>  </Route>
           <Route path="/WaitForconfirmation" element={<WaitForconfirmation />}></Route>
           <Route path="/ForgotPassword" element={<ForgotPassword />}></Route>
-          <Route path='/EnterOtp' element={<EnterOtp />}></Route>          
-          <Route path='/RestPass' element={<RestPass />}></Route>          
-          <Route exact path='/dashboard' element={<Home table1={table1_data} table2={table2_data} table3={table3_data} />} />
-          <Route exact path='/edgegateway' element={<EdgeGatewayList table1={table1_data} />} />
-          <Route path='/edgegateway/:device' element={<EdgeGatewayDetails table1={table1_data} table2={table2_data} table3={table3_data} />} />
-          <Route exact path='/edge/device/leave' element={<LeavingDevicePage data={table2_data} />} />
-          <Route exact path='/usermanagement' element={<UserManagement />} />
-          <Route exact path='/edgedevice' element={<LeavingDeviceList data={table2_data} />} />
-          <Route exact path='/greengrass' element={<GGpage data={table3_data} />} />
-          <Route exact path='/profile' element={ <Profile /> } />
+          <Route path='/EnterOtp' element={<EnterOtp />}></Route>
+          <Route path='/RestPass' element={<RestPass />}></Route>
+          <Route exact path="/" element={<Navbar />} >
+            <Route exact path='/dashboard' element={<Home table1={table1_data} table2={table2_data} table3={table3_data} />} />
+            <Route exact path='/edgegateway' element={<EdgeGatewayList table1={table1_data} />} />
+            <Route path='/edgegateway/:device' element={<EdgeGatewayDetails table1={table1_data} table2={table2_data} table3={table3_data} />} />
+            <Route exact path='/edge/device/leave' element={<LeavingDevicePage data={table2_data} />} />
+            <Route exact path='/usermanagement' element={<UserManagement />} />
+            <Route exact path='/edgedevice' element={<LeavingDeviceList data={table2_data} />} />
+            <Route exact path='/greengrass' element={<GGpage data={table3_data} />} />
+            <Route exact path='/profile' element={<Profile />} />
+          </Route>
 
         </Routes>
       </Router>

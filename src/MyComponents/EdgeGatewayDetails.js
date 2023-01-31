@@ -5,7 +5,6 @@ import { DeviceDetails } from './smallComponents/DeviceDetails'
 import { Table2 } from './Table2'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
-import { Navbar } from './Navbar';
 import { Sidebar } from './Sidebar';
 
 
@@ -14,8 +13,7 @@ export const EdgeGatewayDetails = (props) => {
     const [data] = useState(props.table1.filter((d, index) => d['Edge_Gateway_Id'] === device)[0]);
     const [status] = useState(true);
     return (
-        <>
-            <Navbar />            
+        <>           
             <div className="row p-0 m-0">
                 <Sidebar />                
                 <div className='col-10 m-0 p-0'>

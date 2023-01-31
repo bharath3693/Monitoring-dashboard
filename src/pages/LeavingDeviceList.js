@@ -1,14 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { Navbar } from '../MyComponents/Navbar'
 import { Sidebar } from '../MyComponents/Sidebar'
 import { CountDevices } from '../MyComponents/smallComponents/CountDevices'
 import { Table2 } from '../MyComponents/Table2'
 
 export const LeavingDeviceList = (props) => {
   return (
-    <>
-      <Navbar />      
+    <>      
       <div className="row p-0 m-0">
         <Sidebar />        
         <div className="col-10 p-0 m-0 pt-3">

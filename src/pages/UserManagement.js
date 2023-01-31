@@ -1,9 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Navbar } from "../MyComponents/Navbar";
 import { Sidebar } from "../MyComponents/Sidebar";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export const UserManagement = () => {
     const [users, setUsers] = useState([]);
+    const [show, setShow] = useState(false);
+
+    const [reason, setReason] = useState("");
+    const [userrejected, setUserRejected] = useState("");
+
+    const handleClose = () => setShow(false);
+    const handleShow = (e) => {
+        let userName = e.target.value;
+        console.log(userName);          
+        setUserRejected(userName);
+        setShow(true)
+    };
 
     useEffect(() => {
 
@@ -12,23 +25,24 @@ export const UserManagement = () => {
                 response => response.json()).then((data) => {
                     setUsers(data['Items'])
                 })
-        }, 5000);
+        }, 1000);
         return () => clearInterval(interval);
     }, []);
 
-    function reject(e) {
-        let userName = e.target.value;
+    function reject() {           
         fetch("/reject", {
             method: "post",
-            body: JSON.stringify({ userName }),
+            body: JSON.stringify({ userrejected, reason }),
             headers: {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
             .then((data) => {
-                console.log(data)
+                if(data === true){
+                    setShow(false);
+                }
+                
             })
-
     }
 
     function approve(e) {
@@ -42,10 +56,28 @@ export const UserManagement = () => {
             }
         })
     }
-
     return (
         <>
-            <Navbar />
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Rejection Reason</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <textarea value={reason} onChange={(e) => setReason(e.target.value)} className="w-100" placeholder="type reason for rejection">                    
+                    </textarea>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="danger" onClick={reject}>
+                        Confirm Rejection
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+
             <div className="row p-0 m-0">
                 <Sidebar />
                 <div className="col-10 pt-3 m-0 p-2 pt-4">
@@ -86,28 +118,31 @@ export const UserManagement = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {users &&
-                                            users.map((d, index) => {
-                                                if (d.status === 2) {
-                                                    return (
-                                                        <tr key={d.username}>
-                                                            <td>{index + 1}</td>
-                                                            <td>{d.username}</td>
-                                                            <td>{d.email}</td>
-                                                            <td>
-                                                                <button value={d.username} onClick={e => approve(e)} className="btn btn-sm btn-success">
-                                                                    Approve
-                                                                </button>
-                                                                --
-                                                                <button value={d.username} onClick={e => reject(e)} className="btn btn-sm btn-danger">
-                                                                    Reject
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    )
-                                                }
-                                                return "";
-                                            })
+                                        {users && users.map((d, index) => {
+                                            if (d.status === 2) {
+                                                return (
+                                                    <tr key={d.username}>
+                                                        <td>{index + 1}</td>
+                                                        <td>{d.username}</td>
+                                                        <td>{d.email}</td>
+                                                        <td>
+                                                            <button className="btn btn-sm btn-success" value={d.username} onClick={e => approve(e)} >
+                                                                Approve
+                                                            </button>
+                                                            --
+                                                            <button className="btn btn-sm btn-danger" value={d.username} onClick={e => handleShow(e)}>
+                                                                Reject
+                                                            </button>
+                                                            {/* <button onClick={e => reject(e)} className="btn btn-sm btn-danger">
+                                                                Reject
+                                                            </button> */}
+
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            }
+                                            return "";
+                                        })
                                         }
                                     </tbody>
                                 </table>
@@ -176,7 +211,7 @@ export const UserManagement = () => {
                                                             <td>{index + 1}</td>
                                                             <td>{d.username}</td>
                                                             <td>{d.email}</td>
-                                                            <td>Reason for the rejection.</td>
+                                                            <td>{d.reason}</td>
                                                         </tr>
                                                     )
                                                 }

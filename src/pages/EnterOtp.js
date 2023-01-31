@@ -28,7 +28,7 @@ export const EnterOtp = () => {
 
             console.log(result.status)
 
-            if (result.status == "true") {
+            if (result.status === "true") {
                 history("/RestPass", {
                     state: {
                         e: userName
@@ -58,7 +58,7 @@ export const EnterOtp = () => {
             },
         }).then(res => res.json()).then(result => {
             console.log(result.status);
-            if (result.status == true) {
+            if (result.status === true) {
                 console.log("true");
                 alert("OTP send successfully");
             }
@@ -81,13 +81,13 @@ export const EnterOtp = () => {
                             <MDBInput required wrapperClass='mb-4 mx-5 w-100' id='formControlLg' placeholder="OTP" type="text" value={otp} onChange={handleotp} size="lg" />
                             <button className="btn btn-info mb-4 px-5 mx-5 w-100" color='info' size='m' type="submit"
                             >Verify</button>
-                            <p className='ms-5'>  <a onClick={resendOtp} class="link-info">Resend OTP</a></p>
-                            <p className='ms-5'>  <a onClick={goToLogin} class="link-info">Login</a></p>
+                            <p className='ms-5'>  <div onClick={resendOtp} class="link-info">Resend OTP</div></p>
+                            <p className='ms-5'>  <a href='/login' onClick={goToLogin} class="link-info">Login</a></p>
                         </div>
                     </MDBCol>
                     <MDBCol sm='5' className='d-none d-sm-block px-0'>
                         <img src="https://static.vecteezy.com/system/resources/previews/005/204/303/original/edge-computing-icon-vector.jpg"
-                            alt="Login image" class="img-fluid" style={{ objectFit: 'cover', objectPosition: 'left' }} />
+                            alt="otp" class="img-fluid" style={{ objectFit: 'cover', objectPosition: 'left' }} />
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>

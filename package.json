@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "aws-sdk": "^2.1277.0",
     "axios": "^1.2.2",
+    "jsonwebtoken": "^9.0.0",
     "mdb-react-ui-kit": "^5.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",

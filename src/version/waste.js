@@ -178,3 +178,47 @@
             {
                 hide === 3 &&                
             } */}
+
+
+
+            var token = crypto.randomBytes(32).toString("hex");
+            var timestamp = String(new Date().getTime());
+            var tokenInput = {
+                "username": username,
+                "token": token,
+                "expiry": timestamp
+            };
+
+            var params = {
+                TableName: "Verification_table",
+                Item: tokenInput
+            };
+
+            docClient.put(params, function (err, data) {
+                if (err) {
+                    console.log("error man" + JSON.stringify(err, null, 2));
+                }
+                else {
+                    console.log("token stored in verification table.");
+                }
+            });
+
+            //sending email verification link
+            nodeoutlook.sendEmail({
+                auth: {
+                    user: "intelligent.edge@outlook.com",
+                    pass: "Accenture@"
+                },
+                from: 'intelligent.edge@outlook.com',
+                to: email,
+                subject: 'This is the verification mail ',
+                text: `http://localhost:8080/${username}/verify/${token} 
+                        Please click on the link to verify your email`,
+                replyTo: 'receiverXXX@gmail.com',
+                onError: (e) => console.log("error" + e),
+                onSuccess: (i) => {
+                    console.log("success");
+                    res.send({ "status": "true" });
+                }
+            }
+            );

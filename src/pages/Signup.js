@@ -5,15 +5,12 @@ import {
   MDBContainer,
   MDBCol,
   MDBRow,
-  MDBBtn,
   MDBIcon,
   MDBInput,
-  MDBCheckbox
 }
   from 'mdb-react-ui-kit';
 
-export const Signup = () => {
-  const [loading, setLoading] = useState(false);
+export const Signup = () => {  
   const history = useNavigate();
   const [userName, setuserName] = useState("");
   const handleuserName = (e) => setuserName(e.target.value);
@@ -110,8 +107,7 @@ export const Signup = () => {
           </MDBCol>
 
           <MDBCol sm='5' className='d-none d-sm-block px-0'>
-            <img src="https://static.vecteezy.com/system/resources/previews/005/204/303/original/edge-computing-icon-vector.jpg"
-              alt="Login image" class="img-fluid" style={{ objectFit: 'cover', objectPosition: 'left' }} />
+            <img alt="yoamna" src="https://static.vecteezy.com/system/resources/previews/005/204/303/original/edge-computing-icon-vector.jpg" class="img-fluid" style={{ objectFit: 'cover', objectPosition: 'left' }} />
           </MDBCol>
 
         </MDBRow>

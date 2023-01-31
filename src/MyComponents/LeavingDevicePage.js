@@ -1,16 +1,11 @@
 import React from 'react'
-import { Navbar } from './Navbar'
 import { Sidebar } from './Sidebar'
-import { DeviceDetails } from './smallComponents/DeviceDetails'
-import { Table2 } from './Table2'
 
 export const LeavingDevicePage = (props) => {
     return (
         <>
-            <Navbar />
-            
             <div className="row p-0 m-0">
-                <Sidebar />                
+                <Sidebar />
                 <div className='col-10 m-0 p-0'>
                     <h1 className='big-font p-3 bg-dark text-white m-2 rounded shadow-max'>{props.data[0]['Device']}</h1>
                     <div className='m-2 p-3 rounded'>

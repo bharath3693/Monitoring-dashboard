@@ -1,12 +1,9 @@
 import React from 'react'
-import { Navbar } from '../MyComponents/Navbar'
 import { Sidebar } from '../MyComponents/Sidebar'
 
 export const GGpage = (props) => {
     return (
-        <>
-            <Navbar />
-            
+        <>            
             <div className="row p-0 m-0">
                 <Sidebar />                
                 <div className='col-10 m-0 p-3 pt-4'>

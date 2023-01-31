@@ -23,6 +23,8 @@ AWS.config.update(awsConfig);
 let docClient = new AWS.DynamoDB.DocumentClient();
 
 
+const auth = require("./utils/auth")
+
 //SIGNING UP
 app.put("/write", (req, res) => {
     var userDetails = JSON.stringify(req.body);
@@ -144,75 +146,54 @@ app.get("/:username/verify/:token", (req, res) => {
 app.post("/login", (req, res) => {
     var result = { "status": "empty" };
     input = JSON.stringify(req.body);
-    input = JSON.parse(input);
+    input = JSON.parse(input);    
+    var params = {
+        TableName: "request_user_test",
+        Key: {
+            "username": input.userName
+        }
+    };
 
-    console.log("username   " + input.userName + "  password    " + input.confirmPassword);
+    return docClient.get(params, function (err, data) {
+        if (err) {
+            res.json("error " + JSON.stringify(err, null, 2));
+        }
+        else {            
+            var input2 = JSON.stringify(data, null, 2);
+            input2 = JSON.parse(input2);
+            console.log("fetching  password");
+            const decryptedString = cryptr.decrypt(input2.Item.password);
 
-
-    let check = function () {
-
-        var params = {
-            TableName: "request_user_test",
-            Key: {
-                "username": input.userName
-            }
-        };
-
-        docClient.get(params, function (err, data) {
-            if (err) {
-                res.json("error " + JSON.stringify(err, null, 2));
-            }
-            else {
-
-                console.log(" here is data  " + JSON.stringify(data, null, 2));
-                var input2 = JSON.stringify(data, null, 2);
-                input2 = JSON.parse(input2);
-                console.log("fetching  password   " + input2.Item.password);
-
-                const decryptedString = cryptr.decrypt(input2.Item.password);
-
-                console.log(decryptedString);
-                if (input2.Item.status == "1") {
-                    if (decryptedString == input.confirmPassword) {
-                        console.log("congratulations you have logged in succesfully");
-                        // res.writeHead(301,'/something');
-
-                        result = { "status": "true", "url": "http://localhost:3000/Dashboard" };
-
-                        // console.log("result inside password correct" + JSON.stringify(result));
-
-                        // // res.send("password cfm");
-                        // // redirection to dashboard
-                        // console.log("type of ret" + typeof result);
-                        // result = JSON.stringify(result);
-                        // console.log("type of ret" + typeof result);
-                        // result = JSON.parse(result);
-                        // console.log("type of ret" + typeof result);
-                        // console.log(result);
-                        result.status = "true";
+            if (input2.Item.status === 1) {
+                if (decryptedString == input.confirmPassword) {
+                    console.log("congratulations you have logged in succesfully");
+                    const userInfo = {
+                        username : input.userName,                        
                     }
-                    else {
-                        console.log("Incorrect Password");
-                        result = {
-                            "status": "incorrectPassword"
-                        }
-                    }
+                    const token = auth.generateToken(userInfo)
+                    result = { 
+                        user : input.userName,
+                        email : input2.Item.email,
+                        token : token,
+                        status: "true",
+                    };                    
                 }
                 else {
-                    console.log("wait for admin confirmation");
-                    result = { "status": "adminConformation" }
+                    console.log("Incorrect Password");
+                    result = {
+                        status: "incorrectPassword"
+                    }
                 }
-
-                console.log("result value t" + JSON.stringify(result));
-                res.send(result);
-
             }
-
-        })
-    }
-    let var1 = check();
+            else {
+                console.log("wait for admin confirmation");
+                result = {status: "adminConformation" }
+            }          
+            res.send(result);
+        }
+    })
     // console.log(var1);
-    console.log("result " + result);
+
 
 
 });
@@ -253,24 +234,28 @@ app.post("/approve", (req, res) => {
     });
 });
 
+
 //REJECT DATA
 app.post("/reject", (req, res) => {
     var input = JSON.stringify(req.body);
     input = JSON.parse(input);
-    console.log(" username " + input.userName);
+    console.log(" username " + input.userrejected);
+    console.log(" reasons " + input.reason);
     var params = {
         TableName: "request_user_test",
         Key: {
-            "username": input.userName
+            "username": input.userrejected
         },
 
-        UpdateExpression: "set #sw = :x",
+        UpdateExpression: "set #sw = :x,#re = :y ",
         ExpressionAttributeValues: {
-            ":x": -1
+            ":x": -1,
+            ":y": input.reason
 
         },
         ExpressionAttributeNames: {
-            "#sw": "status"
+            "#sw": "status",
+            "#re": "reason"
         }
     };
     return docClient.update(params, function (err, data) {
@@ -412,7 +397,7 @@ app.get("/userdata", (req, res) => {
     var params = {
         TableName: "request_user_test",
         ExpressionAttributeNames: { '#s': 'status' },
-        ProjectionExpression: "lastName, username, email, firstName, #s",
+        ProjectionExpression: "lastName, username, email, firstName, #s, reason",
     };
 
     return docClient.scan(params, function (err, data) {
@@ -451,16 +436,15 @@ app.post("/profiledata", (req, res) => {
 
 })
 
-
+//EDIT PROFILE
 app.put("/editprofile", (req, res) => {
-    const { username, fname, lname } = req.body;
+    const { username, fname, lname} = req.body;
     var params = {
         TableName: "request_user_test",
         Key: {
             "username": username
         }
     };
-
     console.log("working")
     var params = {
         TableName: "request_user_test",
@@ -469,24 +453,24 @@ app.put("/editprofile", (req, res) => {
         },
         UpdateExpression: "set firstName = :fname, lastName = :lname",
         ExpressionAttributeValues: {
-            // ":uname": username,
+            // ":uname": username,            
             ":fname": fname,
-            ":lname": lname
-        }
+            ":lname": lname,            
+        }       
     };
     return docClient.update(params, function (err, data) {
         if (err) {
             console.log(err)
             res.json({ "response": false })
         }
-        else {
-            
+        else {                        
             res.json({ "response": true })
-            console.log("submitted");
+            console.log("Profile Updated");
         }
     });
 
 })
+//EDIT PROFILE
 
 
 

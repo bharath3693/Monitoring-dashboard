@@ -10,7 +10,6 @@ import {
 } from 'mdb-react-ui-kit';
 
 export const Login = () => {
-
     // const [loading, setLoading] = useState(false);
     const history = useNavigate();
 
@@ -34,10 +33,11 @@ export const Login = () => {
                 'Content-Type': 'application/json'
             },
         }).then(res => res.json()).then(result => {
-
-            console.log(result.status)
-
-            if (result.status === "true") {
+            
+            if (result.status === "true") {                
+                sessionStorage.setItem("token", result.token ); 
+                sessionStorage.setItem("username", result.user );   
+                sessionStorage.setItem("email", result.email );                   
                 history("/dashboard");
             }
             else if (result.status === "incorrectPassword") {
@@ -79,15 +79,15 @@ export const Login = () => {
                         <div className='d-flex flex-column justify-content-center h-custom-2 w-75 pt-4'>
                             <MDBInput required wrapperClass='mb-4 mx-5 w-100' id='formControlLg' placeholder="username" type="text" value={userName} onChange={handleuserName} size="lg" />
                             <MDBInput required wrapperClass='mb-4 mx-5 w-100' id='formControlLg' placeholder="password" type="password" value={confirmPassword} onChange={handlepassword} size="lg" />
-                            <p className='ms-5'>  <a onClick={goToForgotpassword} class="link-info" size="sm">Forgot Password </a></p>
+                            <p className='ms-5'>  <p onClick={goToForgotpassword} class="link-info" size="sm">Forgot Password </p></p>
                             <button className="btn btn-info mb-4 px-5 mx-5 w-100" color='info' size='m' type="submit"
                             >Login</button>
-                            <p className='ms-5'>  <a onClick={goToSignup} class="link-info">Register here</a></p>
+                            <p className='ms-5'>  <a href="/signup" onClick={goToSignup} class="link-info">Register here</a></p>
                         </div>
                     </MDBCol>
 
                     <MDBCol sm='5' className='d-none d-sm-block px-0'>
-                        <img src="https://static.vecteezy.com/system/resources/previews/005/204/303/original/edge-computing-icon-vector.jpg" alt="Login image" class="img-fluid" style={{ objectFit: 'cover', objectPosition: 'left' }} />
+                        <img src="https://static.vecteezy.com/system/resources/previews/005/204/303/original/edge-computing-icon-vector.jpg" alt="Login " class="img-fluid" style={{ objectFit: 'cover', objectPosition: 'left' }} />
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>
