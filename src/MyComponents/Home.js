@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CountDevices } from "./smallComponents/CountDevices"
 import { PieChart, Pie, Tooltip, Legend, Cell, LabelList } from 'recharts';
 import { Sidebar } from "./Sidebar";
-
-
+import { useNavigate } from "react-router-dom";
+import { verify } from "../Functions/verification";
 export const Home = (props) => {
+    const history = useNavigate();
+    
+    verify().then(verification => {
+        if(!verification.verified){
+            history("/login");
+        }
+    });
 
+    const [notification, setNotification] = useState("");
     const data01 = [
         { name: 'RaspBerry Pi', value: props.table1.length },
         { name: 'Device B', value: 3 },
@@ -30,9 +38,15 @@ export const Home = (props) => {
     const colors = ['rgb(11, 147, 185)', 'rgb(8, 178, 113)', 'rgb(205, 219, 11)', 'rgb(198, 12, 12)']
     // const radcolors = ['rgba(255, 255, 255,0.8)', 'rgba(255, 255, 255,0.5)', 'rgba(255, 255, 255,0.6)', 'rgba(255, 255, 255,0.7)']
     const radcolors = ['rgba(0, 255, 255,0.9)', 'rgba(0, 255, 255,0.6)', 'rgba(0, 255, 255,0.9)', 'rgba(0, 255, 255,0.6)']
+    
+    useEffect(() => {      
+        setNotification(props.data4.Status);
+      }, []);
+    
+
 
     return (
-        <>            
+        <>
             <div className="row p-0 m-0">
                 <Sidebar />
                 <div className="col-10 p-0 pt-3 m-0">
@@ -114,7 +128,9 @@ export const Home = (props) => {
 
                     <div className="d-flex justify-content-around  p-2 rounded">
                         <div className="flex-stretch bg-white m-1 p-0 rounded-top shadow-max">
-                            <h4 className='text-center text-success p-2 bg-white m-0 rounded-top text-uppercase text-size'>Additional</h4>
+                            <h4 className='text-center text-success p-2 bg-white m-0 rounded-top text-uppercase text-size'>Notification for Device Connectivity </h4>
+                            <p>status : <br></br> {notification}</p>                            
+                            
                             {/* <PieChart className="var-prime-color w-100" width={500} height={300} >
                         <Tooltip contentStyle={ttStyle} itemStyle={ttStyle} wrapperStyle={ttStyle} offset={0} cursor={{ stroke: 'red', strokeWidth: 2 }} />
                         <Legend verticalAlign="middle" align="right" layout="vertical" iconType="star" height={200} />
@@ -137,7 +153,7 @@ export const Home = (props) => {
                         </div>
 
                         <div className="flex-stretch bg-white m-1 p-0 rounded-top shadow-max">
-                            <h4 className='text-center text-success p-2 bg-white m-0 rounded-top text-uppercase text-size'>Additional</h4>
+                            <h4 className='text-center text-success p-2 bg-white m-0 rounded-top text-uppercase text-size'>Notification for Model Deployment</h4>
                             {/* <PieChart className="var-prime-color w-100" width={500} height={300}>
                         <Tooltip contentStyle={ttStyle} itemStyle={ttStyle} wrapperStyle={ttStyle} offset={0} cursor={{ stroke: 'red', strokeWidth: 2 }} />
                         <Legend verticalAlign="middle" align="right" layout="vertical" iconType="star" height={200} />

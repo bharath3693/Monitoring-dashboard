@@ -24,86 +24,115 @@ let docClient = new AWS.DynamoDB.DocumentClient();
 
 
 const auth = require("./utils/auth")
+const verify = require("./utils/verify")
 
 //SIGNING UP
 app.put("/write", (req, res) => {
     var userDetails = JSON.stringify(req.body);
     userDetails = JSON.parse(userDetails);
     const encryptedString = cryptr.encrypt(userDetails.confirmPassword);
-    console.log(userDetails)
 
-    var input = {
-        "username": userDetails.userName,
-        "firstName": userDetails.firstName,
-        "lastName": userDetails.lastName,
-        "email": userDetails.email,
-        "password": encryptedString,
-        "status": 0,
-    };
-
-    //adding to users table
     var params = {
         TableName: "request_user_test",
-        Item: input
-    };
-    docClient.put(params, (err, data) => {
-        if (err) {
-            console.log("error" + JSON.stringify(err, null, 2));
-        }
-        else {
-            console.log(data);
-            console.log("saved success");
-        }
-    });
-
-    //adding to verification table
-    var userName = userDetails.userName;
-    var token = crypto.randomBytes(32).toString("hex");
-    var timestamp = String(new Date().getTime());
-    var tokenInput = {
-        "username": userName,
-        "token": token,
-        "expiry": timestamp
-    };
-
-    var params = {
-        TableName: "Verification_table",
-        Item: tokenInput
-    };
-
-    docClient.put(params, function (err, data) {
-        if (err) {
-            console.log("error man" + JSON.stringify(err, null, 2));
-        }
-        else {
-            console.log("saved success");
-        }
-    });
-
-
-    //sending email verification link
-    nodeoutlook.sendEmail({
-        auth: {
-            user: "intelligent.edge@outlook.com",
-            pass: "Accenture@"
+        ExpressionAttributeValues: {
+            ':e': userDetails.email
         },
-        from: 'intelligent.edge@outlook.com',
-        to: input.email,
-        subject: 'This is the verification mail ',
-        text: `http://localhost:8080/${userName}/verify/${token} 
-        Please click on the link to verify your email`,
-        replyTo: 'receiverXXX@gmail.com',
-        onError: (e) => console.log("error" + e),
-        onSuccess: (i) => {
-            console.log("success");
-            res.send({ "status": "true" });
+        ProjectionExpression: 'username, email',
+        FilterExpression: 'contains (email, :e)',
+
+    };
+    return docClient.scan(params, (err, data) => {
+        if (data['Count'] === 0) {
+            var params = {
+                TableName: "request_user_test",
+                Key: {
+                    "username": userDetails.userName
+                }
+            };
+            return docClient.get(params, (err, existsData) => {
+                if (existsData['Item']) {
+                    console.log("User Exists")
+                    return res.send({ status: -1 })
+                }
+                else {
+                    var input = {
+                        "username": userDetails.userName,
+                        "firstName": userDetails.firstName,
+                        "lastName": userDetails.lastName,
+                        "email": userDetails.email,
+                        "password": encryptedString,
+                        "status": 0,
+                    };
+                    //adding to users table
+                    var params = {
+                        TableName: "request_user_test",
+                        Item: input
+                    };
+                    docClient.put(params, (err, data) => {
+                        if (err) {
+                            console.log("error " + JSON.stringify(err, null, 2));
+                        }
+                        else {
+                            console.log("data added to user table");
+                        }
+                    });
+
+                    //adding to verification table
+                    var userName = userDetails.userName;
+                    var token = crypto.randomBytes(32).toString("hex");
+                    var timestamp = String(new Date().getTime());
+                    var tokenInput = {
+                        "username": userName,
+                        "token": token,
+                        "expiry": timestamp
+                    };
+                    var params = {
+                        TableName: "Verification_table",
+                        Item: tokenInput
+                    };
+
+                    docClient.put(params, function (err, data) {
+                        if (err) {
+                            console.log("error man" + JSON.stringify(err, null, 2));
+                        }
+                        else {
+                            console.log("token added to verification table");
+                            // sending email verification link
+                            nodeoutlook.sendEmail({
+                                auth: {
+                                    user: "intelligent.edge2@outlook.com",
+                                    pass: "Accenture@"
+                                },
+                                from: 'intelligent.edge2@outlook.com',
+                                to: input.email,
+                                subject: 'This is the verification mail ',
+                                text: `http://localhost:8080/${userName}/verify/${token} Please click on the link to verify your email`,
+                                replyTo: 'receiverXXX@gmail.com',
+                                onError: (e) => console.log("error->" + e),
+                                onSuccess: (i) => {
+                                    console.log("success");
+                                    res.send({ "status": 1 });
+                                }
+                            }
+                            );
+                        }
+                    });
+
+
+                }
+            })
+
         }
-    }
-    );
+        else {
+            console.log("Email exists already")
+            res.send({ status: -2 })
+        }
+    })
+
 
 });
 
-
+//EMAIL VERIFICATION
 app.get("/:username/verify/:token", (req, res) => {
     var username = req.params['username'];
     var token = req.params['token'];
@@ -132,51 +161,52 @@ app.get("/:username/verify/:token", (req, res) => {
             docClient.update(params, function (err, data) {
                 if (err) {
                     console.log("error" + JSON.stringify(err, null, 2));
+                    res.send("Verification Failed")
                 }
                 else {
                     console.log("Verification success");
+                    res.redirect("http://localhost:3000/success")
                 }
             });
         }
     })
 
 })
+//EMAIL VERIFICATION
+
 
 //LOGIN
 app.post("/login", (req, res) => {
     var result = { "status": "empty" };
-    input = JSON.stringify(req.body);
-    input = JSON.parse(input);    
+    const { userName, confirmPassword } = req.body;
     var params = {
         TableName: "request_user_test",
         Key: {
-            "username": input.userName
+            "username": userName
         }
     };
-
     return docClient.get(params, function (err, data) {
         if (err) {
             res.json("error " + JSON.stringify(err, null, 2));
         }
-        else {            
+        else if (data['Item']) {
             var input2 = JSON.stringify(data, null, 2);
             input2 = JSON.parse(input2);
             console.log("fetching  password");
             const decryptedString = cryptr.decrypt(input2.Item.password);
-
             if (input2.Item.status === 1) {
-                if (decryptedString == input.confirmPassword) {
+                if (decryptedString == confirmPassword) {
                     console.log("congratulations you have logged in succesfully");
                     const userInfo = {
-                        username : input.userName,                        
+                        username: userName,
                     }
                     const token = auth.generateToken(userInfo)
-                    result = { 
-                        user : input.userName,
-                        email : input2.Item.email,
-                        token : token,
+                    result = {
+                        user: userName,
+                        email: input2.Item.email,
+                        token: token,
                         status: "true",
-                    };                    
+                    };
                 }
                 else {
                     console.log("Incorrect Password");
@@ -185,17 +215,22 @@ app.post("/login", (req, res) => {
                     }
                 }
             }
-            else {
+            else if(input2.Item.status === 0){
+                console.log("Email Verification required");
+                result = { status: "EV" }
+            }
+            else if(input2.Item.status === 2){
                 console.log("wait for admin confirmation");
-                result = {status: "adminConformation" }
-            }          
+                result = { status: "adminConfirmation" }
+            }
             res.send(result);
         }
+        else {
+            res.send({
+                status: "null"
+            })
+        }
     })
-    // console.log(var1);
-
-
-
 });
 //LOGIN
 
@@ -272,13 +307,9 @@ app.post("/reject", (req, res) => {
 //FORGOT PASSWORD
 var otp = "999";
 app.post("/forgot", (req, res) => {
-
     input = JSON.stringify(req.body);
     input = JSON.parse(input);
-
     console.log("username   " + input.userName);
-
-
     var params = {
         TableName: "request_user_test",
         Key: {
@@ -290,11 +321,9 @@ app.post("/forgot", (req, res) => {
         if (err) {
             res.json("error " + JSON.stringify(err, null, 2));
         }
-        else {
-            console.log(" here is data  " + JSON.stringify(data, null, 2));
+        else if (data['Item']) {
             var input2 = JSON.stringify(data, null, 2);
             input2 = JSON.parse(input2);
-
             var email = input2.Item.email;
             console.log("fetching  email   " + email);
             otp = Math.floor(Math.random() * 9000 + 1000);
@@ -306,21 +335,18 @@ app.post("/forgot", (req, res) => {
                 },
                 from: 'intelligent.edge@outlook.com',
                 to: email,
-                subject: 'This is the verification mail ',
-                text: 'Please enter this opt ' + otp + ' to verify your email',
+                subject: 'OTP verification mail ',
+                text: 'Please enter this OYP ' + otp + ' to verify your email',
                 replyTo: 'receiverXXX@gmail.com',
-
                 onError: (e) => console.log("error" + e),
                 onSuccess: (i) => {
                     console.log("success")
-
                     res.send({ "status": "true" });
                 }
-
-            }
-
-
-            );
+            });
+        }
+        else {
+            res.json({ status: false })
         }
     });
 
@@ -364,14 +390,14 @@ app.post("/password", (req, res) => {
         Key: {
             "username": input.userName
         },
-        UpdateExpression: "set #sw = :x",
+        UpdateExpression: "set #pw = :x",
 
         ExpressionAttributeValues: {
             ":x": encryptedString
 
         },
         ExpressionAttributeNames: {
-            "#sw": "password"
+            "#pw": "password"
         }
     };
     docClient.update(params, function (err, data) {
@@ -385,9 +411,6 @@ app.post("/password", (req, res) => {
             res.send({ "status": "true" });
         }
     });
-
-
-
 })
 // NEW PASSWORD
 
@@ -438,7 +461,7 @@ app.post("/profiledata", (req, res) => {
 
 //EDIT PROFILE
 app.put("/editprofile", (req, res) => {
-    const { username, fname, lname} = req.body;
+    const { username, fname, lname } = req.body;
     var params = {
         TableName: "request_user_test",
         Key: {
@@ -455,15 +478,15 @@ app.put("/editprofile", (req, res) => {
         ExpressionAttributeValues: {
             // ":uname": username,            
             ":fname": fname,
-            ":lname": lname,            
-        }       
+            ":lname": lname,
+        }
     };
     return docClient.update(params, function (err, data) {
         if (err) {
             console.log(err)
             res.json({ "response": false })
         }
-        else {                        
+        else {
             res.json({ "response": true })
             console.log("Profile Updated");
         }
@@ -472,7 +495,13 @@ app.put("/editprofile", (req, res) => {
 })
 //EDIT PROFILE
 
-
+//VERIFY PROFILE
+app.post("/profileverify", async (req, res) => {
+    const { username, token } = req.body;
+    const verification = verify.verifyToken(username, token);
+    res.json(verification)
+})
+//VERIFY PROFILE
 
 //DB FROM SUJITH DYNAMODB
 app.get("/edgegateway", async (req, res) => {
@@ -495,6 +524,14 @@ app.get("/greengrass", async (req, res) => {
             res.send(resp.data.body)
         })
 });
+
+
+app.get("/notification", async (req, res) => {
+    await axios.get("https://0ouhjwgrr1.execute-api.us-east-1.amazonaws.com/prod/Notification-status")
+    .then(resp => {        
+        res.send(resp.data.body)
+    })
+})
 
 
 

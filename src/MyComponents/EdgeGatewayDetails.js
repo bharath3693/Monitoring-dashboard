@@ -10,15 +10,15 @@ import { Sidebar } from './Sidebar';
 
 export const EdgeGatewayDetails = (props) => {
     const { device } = useParams();
-    const [data] = useState(props.table1.filter((d, index) => d['Edge_Gateway_Id'] === device)[0]);
+    const [data] = useState(props.table1.filter((d, index) => d['Edge_Gateway_ID'] === device)[0]);
     const [status] = useState(true);
     return (
-        <>           
+        <>
             <div className="row p-0 m-0">
-                <Sidebar />                
+                <Sidebar />
                 <div className='col-10 m-0 p-0'>
                     <div className='d-flex justify-content-start align-items-center p-3 box-color m-2 rounded shadow-max'>
-                        <b className='m-2 big-font text-dark text-uppercase'>Edge Gateway ID - {data['Edge_Gateway_Id']}</b>
+                        <b className='m-2 big-font text-dark text-uppercase'>Edge Gateway ID - {data['Edge_Gateway_ID']}</b>
                         {/* <span className="bg-white shadow badge badge-white text-dark border">Status : {status ? <CheckCircleIcon sx={{color:'green'}}/> : <CancelIcon sx={{color:'red'}} />}  </span> */}
                         {status ? <span className="shadow bg-success badge badge-success">Status : <CheckCircleIcon />  </span>
                             : <span className="shadow bg-danger badge badge-danger">Status : <CancelIcon /> </span>}
@@ -26,8 +26,10 @@ export const EdgeGatewayDetails = (props) => {
                     </div>
                     <div className='d-flex justify-content-around p-2 m-2 rounded shadow-max'>
                         <DeviceDetails classdetails={"purple-grad device-tabs p-3 m-1 text-center rounded-some shadow"} head={"DEVICE TYPE"} ans={data['Device_Type']} />
+                        <DeviceDetails classdetails={"purple-grad device-tabs p-3 m-1 text-center rounded-some shadow"} head={"CORE DEVICE NAME"} ans={data['Core_Device_Name']} />
                         <DeviceDetails classdetails={"purple-grad device-tabs p-3 m-1 text-center rounded-some shadow"} head={"HARDWARE"} ans={data['Hardware']} />
                         <DeviceDetails classdetails={"purple-grad device-tabs p-3 m-1 text-center rounded-some shadow"} head={"REVISION"} ans={data['Revision']} />
+                        <DeviceDetails classdetails={"purple-grad device-tabs p-3 m-1 text-center rounded-some shadow"} head={"LOCATION"} ans={data['Device_Location']} />
                         <DeviceDetails classdetails={"purple-grad device-tabs p-3 m-1 text-center rounded-some shadow"} head={"No of Edge Devices"} ans={3} />
                     </div>
                     <div className='d-flex-column p-1'>

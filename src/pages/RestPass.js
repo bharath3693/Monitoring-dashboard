@@ -30,7 +30,6 @@ export const RestPass = () => {
                 method: "post",
                 // We convert the React state to JSON and send it as the POST body
                 body: JSON.stringify({ userName, confirmPassword }),
-
                 headers: {
                     "Content-Type": "application/json",
                 },

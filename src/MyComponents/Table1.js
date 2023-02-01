@@ -37,7 +37,7 @@ export const Table1 = (props) => {
           return (
             <tr key={index}>
               <th scope="row">{index + 1}</th>
-              <td><Link className="text-decoration-none" to={`/edgegateway/${d['Edge_Gateway_Id']}`}><b>{d['Edge_Gateway_Id']}</b></Link></td>
+              <td><Link className="text-decoration-none" to={`/edgegateway/${d['Edge_Gateway_ID']}`}><b>{d['Edge_Gateway_ID']}</b></Link></td>
               <td>{d['Device_Type']}</td>
               <td>Active</td>
               <td>3</td>

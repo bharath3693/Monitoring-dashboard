@@ -4,7 +4,7 @@ import { KeyboardArrowRight, KeyboardArrowDown } from '@mui/icons-material'
 
 export const Row = (props) => {
     // const order = [4, 1, 0, 8, 10, 6, 9, 2, 5, 7];
-    const order = ['Board_ID', 'Device', 'Hardware_Version', 'Board_Type', 'Board_Architecture', 'Edge_Gateway_ID', 'Model_Name', 'Model_Type', 'Model_Version', 'Status', 'Last_Updated'];
+    const order = ['Board_ID', 'Device', 'Hardware_Version', 'Board_Type', 'Board_Architecture', 'Edge_Gateway_ID', 'Model_Name', 'Model_Type', 'Model_Version', 'Status', 'Last_Updated', "MCU_Location"];
     console.log(props)
     const { row } = props;
     function setChanges() {

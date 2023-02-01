@@ -14,6 +14,7 @@ import { GGpage } from "./pages/GGpage";
 import { Login } from "./MyComponents/Login";
 import { Signup } from "./pages/Signup";
 import { WaitForconfirmation } from "./pages/WaitForconfirmation";
+import { VerificationSuccess } from "./pages/VerificationSuccess";
 import { ForgotPassword } from "./pages/ForgotPassword";
 import { EnterOtp } from "./pages/EnterOtp";
 import { RestPass } from "./pages/RestPass";
@@ -25,7 +26,7 @@ function App() {
   const [table1_data, set_table1] = useState([]);
   const [table2_data, set_table2] = useState([]);
   const [table3_data, set_table3] = useState([]);
-
+  const [data4, setData4] = useState([]);
 
   const fetchData1 = () => {
     return fetch("/edgegateway")
@@ -49,7 +50,16 @@ function App() {
       });
   }
 
+  const fetchData4 = () => {
+    return fetch("/notification")
+      .then((response) => response.json())
+      .then((data) => {
+        setData4(data)
+      });
+  }
+
   useEffect(() => {
+    fetchData4();
     fetchData1();
     fetchData2();
     fetchData3();
@@ -65,8 +75,9 @@ function App() {
           <Route path="/ForgotPassword" element={<ForgotPassword />}></Route>
           <Route path='/EnterOtp' element={<EnterOtp />}></Route>
           <Route path='/RestPass' element={<RestPass />}></Route>
+          <Route path='/success' element={ <VerificationSuccess /> }></Route>
           <Route exact path="/" element={<Navbar />} >
-            <Route exact path='/dashboard' element={<Home table1={table1_data} table2={table2_data} table3={table3_data} />} />
+            <Route exact path='/dashboard' element={<Home table1={table1_data} table2={table2_data} table3={table3_data} data4={data4}/>} />
             <Route exact path='/edgegateway' element={<EdgeGatewayList table1={table1_data} />} />
             <Route path='/edgegateway/:device' element={<EdgeGatewayDetails table1={table1_data} table2={table2_data} table3={table3_data} />} />
             <Route exact path='/edge/device/leave' element={<LeavingDevicePage data={table2_data} />} />

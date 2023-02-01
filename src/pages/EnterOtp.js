@@ -25,9 +25,7 @@ export const EnterOtp = () => {
                 'Content-Type': 'application/json'
             },
         }).then(res => res.json()).then(result => {
-
             console.log(result.status)
-
             if (result.status === "true") {
                 history("/RestPass", {
                     state: {
@@ -38,14 +36,6 @@ export const EnterOtp = () => {
             else {
                 alert("Wrong OTP");
             }
-            //     else if(result.status=="incorrectPassword")
-            //     {
-            //             alert("Incorrect Password");
-            //     }
-            //     else if(result.status=="adminConformation")
-            //     {
-            //             alert("wait for admin confirmation");
-            //     }
         });
     };
 
@@ -79,10 +69,11 @@ export const EnterOtp = () => {
                         </div>
                         <div className='d-flex flex-column justify-content-center h-custom-2 w-75 pt-4'>
                             <MDBInput required wrapperClass='mb-4 mx-5 w-100' id='formControlLg' placeholder="OTP" type="text" value={otp} onChange={handleotp} size="lg" />
-                            <button className="btn btn-info mb-4 px-5 mx-5 w-100" color='info' size='m' type="submit"
-                            >Verify</button>
-                            <p className='ms-5'>  <div onClick={resendOtp} class="link-info">Resend OTP</div></p>
-                            <p className='ms-5'>  <a href='/login' onClick={goToLogin} class="link-info">Login</a></p>
+                            <button className="btn btn-info mb-4 px-5 mx-5 w-100" color='info' size='m' type="submit">
+                                Verify
+                            </button>
+                            <p className='ms-5'>  <p onClick={resendOtp} className="cursor-pointer link-info m-0">Resend OTP</p></p>
+                            <p className='ms-5'>  <p onClick={goToLogin} class="cursor-pointer link-info m-0">Login</p></p>
                         </div>
                     </MDBCol>
                     <MDBCol sm='5' className='d-none d-sm-block px-0'>
